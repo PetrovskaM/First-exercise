@@ -7,7 +7,7 @@
   display: none;
 }
 header {
-  background-image: url(cover.svg);
+  background-image: url(./images/cover.svg);
   background-repeat: no-repeat;
   background-color: #fafafa;
 }
@@ -148,7 +148,7 @@ header {
 .who-we-are-card {
   width: 333px;
   height: 442px;
-  background-image: url(who-we-are-cover.svg);
+  background-image: url(./images/who-we-are-cover.svg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
