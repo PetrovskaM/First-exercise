@@ -36,8 +36,11 @@ console.log(eitherFilter(arrOfNums, integerSquareRoot, over100)); // should log:
 
 // 3.
 
-reduce = (nums, add) => {
-  return console.log(nums.reduce(add));
+reduce = (nums, cb, initialValue=0) => {
+  for(const num of nums){
+     initialValue = cb(num, initialValue)
+    }  
+    return console.log(initialValue)
 }
 const nums = [4, 1, 3];
 const add = function (a, b) {
@@ -58,15 +61,30 @@ console.log(intersection([arr1, arr2, arr3])); // should log: [5, 15]
 
 // 5.
 
-union = ([a, b, c]) => {
 
-return [...new Set([...a, ...b, ...c])];
+function myUnionReducer(prevValue,currentValue){
+  
+    currentValue.forEach(el => {
+      if(!prevValue.includes(el)) {
+        prevValue.push(el)
+      }
+    })
+    return prevValue;
+  
 }
 
-const a = [5, 10, 15];
-const b = [15, 88, 1, 5, 7];
-const c = [100, 15, 10, 1, 5];
-console.log(union([a, b, c])); // should log: [5, 10, 15, 88, 1, 7, 100]
+const union = (arrayOfArrays) => {
+  // [[1,2,3],[3,2,2]]
+const reducedArray= arrayOfArrays.reduce(myUnionReducer, [])
+ return reducedArray;
+};
+
+
+
+const array1 = [5, 10, 15];
+const array2 = [15, 88, 1, 5, 7];
+const array3 = [100, 15, 10, 1, 5];
+console.log(union([array1, array2, array3])); // should log: [5, 10, 15, 88, 1, 7, 100]
 
 // 6.
 

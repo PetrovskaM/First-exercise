@@ -2,7 +2,7 @@
 
 const x = 2;
 const y = 5;
-const solution = x + y;
+const solution = `The sum of  ${x} and  ${y}  is  ${x+y}`
 console.log(solution);
 
 // 2.
@@ -53,9 +53,9 @@ const sumMe = {
 };
 let total = 0;
 
-for (let value in sumMe) {
-  if (Number.isInteger(sumMe[value])) {
-    total += sumMe[value];
+for (let key in sumMe) {
+  if (Number.isInteger(sumMe[key])) {
+    total += sumMe[key];
   }
 }
 console.log(total);
@@ -76,9 +76,8 @@ function makePlans(name) {
   callFriend(friendsAvailable, name);
 }
 
-function callFriend(bool, name) {
-  let result;
-  if (bool) {
+function callFriend(isFriendAwailiable, name) {
+  if (isFriendAwailiable) {
     console.log(`Plans made with ${name} this weekend`);
   } else {
     console.log("Everyone is busy this weekend.");
@@ -172,11 +171,11 @@ subtractTwo = (number) => {
   return number - 2;
 };
 
-function map(list, subtractTwo) {
+function map(list, cb) {
   let newItem = [];
 
   for (let items of list) {
-    newItem.push(subtractTwo(items));
+    newItem.push(cb(items));
   }
   
   console.log(newItem);
